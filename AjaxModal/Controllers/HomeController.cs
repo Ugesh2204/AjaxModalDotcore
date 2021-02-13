@@ -31,17 +31,24 @@ namespace AjaxModal.Controllers
             return PartialView("_ContactModalPartial", model);
         }
 
-        //[HttpPost]
-        //public IActionResult Contact(Contact model)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Contacts.Add(model);
-        //        db.SaveChanges();
-        //    }
+        [HttpPost]
+        public IActionResult Contact(Contact model)
+        {
 
-        //    return PartialView("_ContactModalPartial", model);
-        //}
+            //Now for the jQuery part.We need to attach click event handler to 
+            //a button which will send whole form.Correct element to attach to is a “Save” button.
+            //We’ll identify it by an additional data-attribute(data-save= "modal"). 
+            //Once user clicks “Send”, it should either show errors or disappear in case of success.
+
+
+            if (ModelState.IsValid)
+            {
+                db.Contacts.Add(model);
+                db.SaveChanges();
+            }
+
+            return PartialView("_ContactModalPartial", model);
+        }
 
     }
 }

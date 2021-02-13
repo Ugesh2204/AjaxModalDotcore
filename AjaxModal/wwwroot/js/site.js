@@ -9,5 +9,21 @@
         });
     });
 
+
+    // site.js
+    // attach click event handler to an element
+    // which is located inside #modal-placeholder
+    // and has data-save attribute equal to modal
+    //What’s the next step ? Well, we need to get form data and then send it.
+   // We’re simply going to navigate DOM in order to find a form tag located inside the modal.Then we’ll extract form action url.We’re going to get form data and make it eligible for sending(serialization) 
+   //then we’re going to send the data to server.Once we receive response we’re going to close the modal.
+
+
+    placeholderElement.on('click', '[data-save="modal"]', function (event) {
+       
+
+        alert("save");
+    });
+
   
 });
