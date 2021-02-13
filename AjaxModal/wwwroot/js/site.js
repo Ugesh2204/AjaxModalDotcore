@@ -20,9 +20,17 @@
 
 
     placeholderElement.on('click', '[data-save="modal"]', function (event) {
-       
+        event.preventDefault();
 
-        alert("save");
+        var form = $(this).parents('.modal').find('form');
+        var actionUrl = form.attr('action');
+        var dataToSend = form.serialize();
+
+        console.log(dataToSend);
+
+        //$.post(actionUrl, dataToSend).done(function (data) {
+        //    placeholderElement.find('.modal').modal('hide');
+        //});
     });
 
   
