@@ -11,6 +11,9 @@
             </div>
             <div class="modal-body">
                 <form asp-action="Contact">
+
+                    <!--Firstly we need to find a way to differentiate a modal which succeeded from the one that failed. Since we’re already processing modal HTML, we can also include a hidden input field which will tell us wheter ModelState is valid or not. 
+                        The very same ModelState.IsValid property from controller can also be access inside view:-->
                     <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
                     <div class="form-group">
                         <label asp-for="FirstName"></label>

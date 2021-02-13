@@ -26,8 +26,24 @@
         var actionUrl = form.attr('action');
         var dataToSend = form.serialize();
 
+
+
+
+        //Once user presses Save button a request is made to HomeController / Contact action.Action validates
+        //it and if everything is OK saves it into static list.Then it returns a view(full modal HTML), including errors if validation failed.Then we receive response inside script.We need to extract
+       //modal body from the response and replace current modal body with the one from response.
+
         $.post(actionUrl, dataToSend).done(function (data) {
-            placeholderElement.find('.modal').modal('hide');
+            var newBody = $('.modal-body', data);
+             // find IsValid input field and check it's value
+        // if it's valid then hide modal window
+            placeholderElement.find('.modal-body').replaceWith(newBody);
+
+            var isValid = newBody.find('[name="IsValid"]').val() == 'True';
+
+            if (isValid) {
+                placeholderElement.find('.modal').modal('hide');
+            }
         });
     });
 
